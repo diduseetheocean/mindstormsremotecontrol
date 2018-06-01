@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:RemoteControl" x:Class="RemoteControl.MainPageView">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="HeightRequest" Value="55">
+                </Setter>
+            </Style>
+            <Style x:Key="Label" TargetType="Label">
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Selected}" Value="True">
+                        <Setter Property="TextColor" Value="White" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <!-- ContentPage 01-->
+    <ContentPage Title="Navigation">
+        <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Padding="30,0,30,0">
+                <StackLayout Margin="0,20,0,10" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Switch HorizontalOptions="Center" IsToggled="{Binding UsingManualNavigation}" IsEnabled="{Binding ManualNavigationEnabled}" />
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20">
+                    <Button Text="Forward" Command="{Binding ForwardCmd}" IsEnabled="{Binding NavigationButtonsEnabled}">
+                    </Button>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Left" Command="{Binding LeftCmd}" IsEnabled="{Binding NavigationButtonsEnabled}" HorizontalOptions="FillAndExpand">
+                        </Button>
+                        <Button Text="Right" Command="{Binding RightCmd}" IsEnabled="{Binding NavigationButtonsEnabled}" HorizontalOptions="FillAndExpand">
+                        </Button>
+                    </StackLayout>
+                    <Button Text="Backward" Command="{Binding BackwardCmd}" IsEnabled="{Binding NavigationButtonsEnabled}">
+                    </Button>
+                    <Button Text="Stop" Command="{Binding StopCmd}" IsEnabled="{Binding NavigationButtonsEnabled}">
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+            <Label Grid.Row="1" Text="{Binding CurrentStateName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="#2196F3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+            <StackLayout Grid.Row="2" Padding="30,0,30,0">
+                <StackLayout Margin="0,15,0,15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Switch HorizontalOptions="Center" IsToggled="{Binding UsingAccelerationNavigation}" IsEnabled="{Binding AccelerometerNavigationEnabled}" />
+                </StackLayout>
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                        <Label Text="{Binding XCrossSensor}" TextColor="#2196F3" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1">
+                        <Label Text="{Binding YCrossSensor}" TextColor="#2196F3" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="2">
+                        <Label Text="{Binding ZCrossSensor}" TextColor="#2196F3" />
+                    </StackLayout>
+                </Grid>
+                <Button Text="{Binding CalibrateButtonText}" Command="{Binding CalibrateCmd}" IsEnabled="{Binding CalibrateButtonEnabled}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <!-- ContentPage 02-->
+    <ContentPage Title="Settings">
+        <StackLayout Padding="0,20,0,20">
+            <Label Style="{StaticResource h1}" HorizontalOptions="Center" Text="Bluetooth Devices">
+            </Label>
+            <ListView Margin="0,0,0,0" IsEnabled="{Binding BluetoothDeviceListViewEnabled}" SelectedItem="{Binding SelectedBluetoothDevice}" ItemsSource="{Binding BluetoothDeviceCollection}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="30,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Style="{StaticResource Label}" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding BluetoothDeviceModel.Name}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Padding="30,0,30,0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                <Button Command="{Binding SelectedBluetoothDevice.ConnectEV3Cmd}" Text="{Binding ConnectButtonText}" IsEnabled="{Binding ConnectButtonEnabled}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
