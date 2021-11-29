@@ -1,7 +1,7 @@
 # Android RemoteControl for Lego® Mindstorms
 
 ## Introduction
-My first <a href="https://visualstudio.microsoft.com/de/xamarin/" target="_blank">Xamarin</a> project which was intended for learning <a href="https://docs.microsoft.com/de-de/xamarin/xamarin-forms/" target="_blank">Xamarin.Forms</a> and its binding stuff.
+My first <a href="https://visualstudio.microsoft.com/de/xamarin/" target="_blank">Xamarin</a> project which was intended for understanding <a href="https://docs.microsoft.com/de-de/xamarin/xamarin-forms/" target="_blank">Xamarin.Forms</a>, ui-binding and the MVVM pattern.
 Thanks to <a href="https://twitter.com/mindstormsdk?lang=de" target="_blank">Anders Soborg</a> for providing a <a href="http://www.monobrick.dk/software/monobrick/" target="_blank">C# library</a> for the Lego® <a href="https://www.lego.com/de-de/mindstorms" target="_blank">Mindstorms</a> API and making the learning process much more fun.
 
 ## Features
@@ -16,12 +16,7 @@ Thanks to <a href="https://twitter.com/mindstormsdk?lang=de" target="_blank">And
 * [MonoBrick from Anders Soborg](https://github.com/AndersSoborg/MonoBrick-Communication-Software)
 
 ## Screenshots
-<img width=400 src="images/screenshot_01.png" alt="App Screenshot Controls">
-<img width=400 src="images/screenshot_02.png" alt="App Screenshot Bluetooth">
-
-
-<style>
-img {
-    margin:20px 20px 20px 0;
-}
-</Style>r
+<span align="left">
+    <img width="40%" src="images/screenshot_01.png" alt="App Screenshot Controls">
+    <img width="40%" src="images/screenshot_02.png" alt="App Screenshot Bluetooth">
+</span>
